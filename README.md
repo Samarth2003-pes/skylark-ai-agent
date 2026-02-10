@@ -1,5 +1,4 @@
 Skylark Drones – Drone Operations Coordinator AI Agent
-
 🚁 Project Overview
 
 Skylark Drones operates multiple drone missions across different locations, pilots, and drone types. Coordinating pilots, drones, and missions manually is error-prone and time-consuming.
@@ -23,7 +22,7 @@ The system exposes a conversational API that allows users to interact with the c
 🧠 Key Features
 ✅ Roster Management
 
-Query pilots by skills, certifications, location
+Query pilots by skills, certifications, and location
 
 Track availability (Available / Assigned / On Leave)
 
@@ -31,7 +30,7 @@ Update pilot status (synced back to Google Sheets)
 
 ✅ Drone Inventory Management
 
-Query drones by capability, location, availability
+Query drones by capability, location, and availability
 
 Detect maintenance constraints
 
@@ -111,8 +110,8 @@ Google Cloud Service Account – Secure authentication
 
 🚀 How to Run Locally
 1️⃣ Clone the repository
-git clone <your-github-repo-url>
-cd Skylark_AI_Agent
+git clone https://github.com/Samarth2003-pes/skylark-ai-agent
+cd skylark-ai-agent
 
 2️⃣ Create & activate virtual environment
 python -m venv venv
@@ -121,23 +120,41 @@ venv\Scripts\activate
 3️⃣ Install dependencies
 python -m pip install -r requirements.txt
 
-4️⃣ Add credentials
+🔐 Google Sheets Credentials Setup
 
-Place your Google service account file as:
+This project uses a Google Cloud Service Account to access Google Sheets.
 
-credentials.json
+⚠️ For security reasons, the credentials.json file is NOT included in this repository.
 
+To run the application locally:
 
-⚠️ Ensure the service account has Editor access to all Google Sheets.
+Create a Google Cloud service account
 
-5️⃣ Start the server
+Enable the following APIs:
+
+Google Sheets API
+
+Google Drive API
+
+Download the service account key as credentials.json
+
+Place credentials.json in the project root directory (local only)
+
+Share all Google Sheets with the service account email (Editor access)
+
+4️⃣ Start the server
 python -m uvicorn app:app --reload
 
-6️⃣ Open API Docs
+🔗 Live Demo
+
+This application is designed to be run locally due to secure Google Sheets credentials.
+
+After starting the server, the interactive API documentation (Swagger UI) is available at:
+
 http://127.0.0.1:8000/docs
 
 
-Use the /chat endpoint to interact with the AI agent.
+All functionality, including mission assignment, conflict detection, and urgent reassignment, can be tested using the /chat endpoint from this interface.
 
 💬 Example Chat Requests
 Assign resources
